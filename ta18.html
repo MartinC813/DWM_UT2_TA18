@@ -1,0 +1,31 @@
+<!DOCTYPE html><html>
+    <head><script defer src="ta18.js"></script></head>
+    <body>
+        <div id="paraLaLista">
+
+        </div>
+        <input type="search" id="inputBusqueda"/>
+
+        <span id="elementosRelacionados"></span>
+
+        <script>
+            const Buscar = document.getElementById("inputBusqueda");
+
+            Buscar.addEventListener("input", (event) => {
+                const valor = event.target.value.toLowerCase(); 
+                const lista = document.querySelectorAll("#Personas li"); 
+                const coincidencias = document.getElementById("elementosRelacionados");
+
+                coincidencias.innerHTML = '';
+
+                lista.forEach(element => {
+                    if (element.textContent.toLowerCase().includes(valor)) {
+                        const nuevoElemento = document.createElement("li");
+                        nuevoElemento.textContent = element.textContent;
+                        coincidencias.appendChild(nuevoElemento);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
